@@ -1,14 +1,17 @@
 <template>
-  <el-amap :events="events"></el-amap>
+  <div style="height:100vh;">
+    <el-amap :events="events" :center="center"> </el-amap>
+  </div>
 </template>
 
 <script>
+import 'echarts/lib/chart/line'
 import 'echarts/lib/chart/lines'
 import 'echarts/lib/chart/effectScatter'
-import AmapEcharts from './libs/amap-echarts'
+import AMapEcharts from './libs/amap'
 
 const data = {
-  上海: [121.4648, 31.2891],
+  上海: [121.509723, 31.226187],
   东莞: [113.8953, 22.901],
   东营: [118.7073, 37.5513],
   中山: [113.4229, 22.478],
@@ -36,14 +39,12 @@ export default {
   name: 'App',
   data() {
     return {
+      center: [121.4648, 31.2891],
       events: {
         init: map => {
-          const ae = new AmapEcharts({
-            amap: {
-              map
-            }
-          })
-          ae.getEcharts().setOption({
+          window.map = map
+          const ae = new AMapEcharts(map)
+          ae.setOption({
             series: [
               //被攻击点
               {
@@ -55,21 +56,13 @@ export default {
                   brushType: 'fill',
                   scale: 4
                 },
-                label: {
-                  normal: {
-                    show: true,
-                    position: 'top',
-                    offset: [0, -15],
-                    formatter: '{b}',
-                    fontSize: 16
-                  }
-                },
                 symbol: 'circle',
                 symbolSize: 16,
                 data: scatterData
               },
               {
                 type: 'lines',
+                coordinateSystem: 'amap',
                 zlevel: 3,
                 effect: {
                   show: true,
@@ -84,11 +77,28 @@ export default {
                     opacity: 0, //尾迹线条透明度
                     curveness: 0.5 //尾迹线条曲直度
                   }
-                }
-                // data: linesData
+                },
+                data: linesData
               }
             ]
           })
+          // ae.setOption({
+          //   xAxis: {
+          //     type: 'category',
+          //     boundaryGap: false,
+          //     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+          //   },
+          //   yAxis: {
+          //     type: 'value'
+          //   },
+          //   series: [
+          //     {
+          //       data: [820, 932, 901, 934, 1290, 1330, 1320],
+          //       type: 'line',
+          //       areaStyle: {}
+          //     }
+          //   ]
+          // })
         }
       }
     }

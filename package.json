@@ -12,8 +12,7 @@
     "core-js": "^2.6.5",
     "echarts": "^4.2.1",
     "vue": "^2.6.10",
-    "vue-amap": "^0.5.10",
-    "zrender": "^4.0.7"
+    "vue-amap": "^0.5.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",

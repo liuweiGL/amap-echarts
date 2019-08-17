@@ -1,14 +1,13 @@
 <template>
-  <div style="height:100vh;">
-    <el-amap :events="events" :center="center"> </el-amap>
-  </div>
+  <el-amap :events="events" :zoom="zoom" :center="center" :map-style="mapStyle">
+  </el-amap>
 </template>
 
 <script>
 import 'echarts/lib/chart/line'
 import 'echarts/lib/chart/lines'
 import 'echarts/lib/chart/effectScatter'
-import AMapEcharts from './libs/amap'
+import AMapEcharts from './libs/amap-echarts'
 
 const data = {
   上海: [121.509723, 31.226187],
@@ -39,14 +38,15 @@ export default {
   name: 'App',
   data() {
     return {
+      zoom: 5,
       center: [121.4648, 31.2891],
+      mapStyle: 'amap://styles/whitesmoke',
       events: {
         init: map => {
           window.map = map
           const ae = new AMapEcharts(map)
           ae.setOption({
             series: [
-              //被攻击点
               {
                 type: 'effectScatter',
                 coordinateSystem: 'amap',
@@ -56,49 +56,54 @@ export default {
                   brushType: 'fill',
                   scale: 4
                 },
-                symbol: 'circle',
-                symbolSize: 16,
+                symbolSize: 8,
                 data: scatterData
               },
               {
                 type: 'lines',
                 coordinateSystem: 'amap',
-                zlevel: 3,
+                zlevel: 1,
                 effect: {
                   show: true,
-                  period: 4, //箭头指向速度，值越小速度越快
-                  trailLength: 0.02, //特效尾迹长度[0,1]值越大，尾迹越长重
-                  symbol: 'arrow', //箭头图标
-                  symbolSize: 5 //图标大小
+                  period: 6,
+                  trailLength: 0.5,
+                  color: '#fff',
+                  symbolSize: 3
                 },
                 lineStyle: {
                   normal: {
-                    width: 1, //尾迹线条宽度
-                    opacity: 0, //尾迹线条透明度
-                    curveness: 0.5 //尾迹线条曲直度
+                    color: 'red',
+                    width: 0,
+                    curveness: 0.2
+                  }
+                },
+                data: linesData
+              },
+              {
+                type: 'lines',
+                coordinateSystem: 'amap',
+                zlevel: 2,
+                symbol: 'none',
+                symbolSize: 10,
+                effect: {
+                  show: true,
+                  period: 6,
+                  trailLength: 0,
+                  symbol: 'arrow',
+                  symbolSize: 6
+                },
+                lineStyle: {
+                  normal: {
+                    color: 'red',
+                    width: 1,
+                    opacity: 0.6,
+                    curveness: 0.2
                   }
                 },
                 data: linesData
               }
             ]
           })
-          // ae.setOption({
-          //   xAxis: {
-          //     type: 'category',
-          //     boundaryGap: false,
-          //     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-          //   },
-          //   yAxis: {
-          //     type: 'value'
-          //   },
-          //   series: [
-          //     {
-          //       data: [820, 932, 901, 934, 1290, 1330, 1320],
-          //       type: 'line',
-          //       areaStyle: {}
-          //     }
-          //   ]
-          // })
         }
       }
     }

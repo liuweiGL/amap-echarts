@@ -8,3 +8,7 @@ tabWidth: 2
 trailingComma: 'none'
 useTabs: false
 jsxSingleQuote: true
+overrides:
+  - files: '*.md'
+    options:
+      semi: true

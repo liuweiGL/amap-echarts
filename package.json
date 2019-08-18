@@ -1,14 +1,21 @@
 {
-  "name": "amap-canvas",
-  "version": "0.1.0",
-  "private": true,
+  "name": "amap-echarts",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": false,
+  "sideEffects": false,
+  "main": "dist/amap-echarts.cjs.js",
+  "module": "dist/amap-echarts.esm.js",
+  "browser": "dist/amap-echarts.umd.js",
   "scripts": {
-    "start": "yarn serve",
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "start": "vue-cli-service serve",
+    "lint": "vue-cli-service lint",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "lib": "rollup -c rollup.config.js"
   },
   "dependencies": {
+    "amap-echarts": "^1.0.0",
     "core-js": "^2.6.5",
     "echarts": "^4.2.1",
     "events": "^3.0.0",
@@ -16,6 +23,7 @@
     "vue-amap": "^0.5.10"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
@@ -25,6 +33,15 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0",
     "prettier": "^1.18.2",
-    "vue-template-compiler": "^2.6.10"
+    "rollup": "^1.19.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.2",
+    "rollup-plugin-filesize": "^6.2.0",
+    "rollup-plugin-multi-input": "^1.0.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.1",
+    "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.0.3",
+    "vuepress-plugin-flowchart": "^1.4.3"
   }
 }

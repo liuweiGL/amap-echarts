@@ -5,7 +5,7 @@ module.exports = {
   port: 8888,
   dest: 'docs-dist',
   title: 'amap-echarts',
-  description: '在高德地图上绘制 echarts 图表',
+  description: '在高德地图上展示 echarts 图表',
   plugins: ['flowchart'],
   markdown: {
     anchor: { permalink: true }

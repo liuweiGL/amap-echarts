@@ -6,7 +6,7 @@ export default class AMapCoordinate {
   static create(ecModel) {
     const options = ecModel.getOption()
     if (!options.getAMap) {
-      throw new Error('请使用 AmapEcharts#setOption 方法设置参数')
+      return
     }
     const amapCoordinate = new AMapCoordinate(options.getAMap())
     ecModel.eachSeries(seriesModel => {

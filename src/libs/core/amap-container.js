@@ -1,14 +1,15 @@
 /**
- * 使用高德地图自定义图层提供 `canvas` 画布
+ * 使用高德地图自定义图层提供 `echarts` 容器
  *
  *
  * @see https://lbs.amap.com/api/javascript-api/reference/self-own-layers
  */
-export default class AMapCanvas {
-  canvas = null
+export default class AMapContainer {
+  container = null
   layer = null
   promise = null
   disposed = false
+
   constructor(map) {
     this.promise = new Promise((resolve, reject) => {
       try {
@@ -16,13 +17,14 @@ export default class AMapCanvas {
           if (this.disposed) {
             return
           }
-          const canvas = document.createElement('canvas')
-          this.layer = new AMap.CustomLayer(canvas, {
+          const container = document.createElement('div')
+          this.layer = new AMap.CustomLayer(container, {
             map,
+            zIndex: 120,
             alwaysRender: false
           })
-          this.canvas = canvas
-          this._setCanvasSize()
+          this.container = container
+          this._setSize()
           resolve()
         })
       } catch (error) {
@@ -31,21 +33,12 @@ export default class AMapCanvas {
     })
   }
 
-  // 设备像素比
-  _getPixelRatio() {
-    return Math.min(2, Math.round(window.devicePixelRatio || 1))
-  }
-
-  // 设置 canvas 的 width & height
-  _setCanvasSize() {
-    const pixelRatio = this._getPixelRatio()
+  _setSize() {
     const size = this.getMap().getSize()
     const width = size.getWidth()
     const height = size.getHeight()
-    this.canvas.width = width * pixelRatio
-    this.canvas.height = height * pixelRatio
-    this.canvas.style.width = width + 'px'
-    this.canvas.style.height = height + 'px'
+    this.container.style.width = width + 'px'
+    this.container.style.height = height + 'px'
   }
 
   ready(callback) {
@@ -54,7 +47,7 @@ export default class AMapCanvas {
 
   setRender(render) {
     this.layer.render = () => {
-      this._setCanvasSize()
+      this._setSize()
       render()
     }
   }
@@ -63,15 +56,15 @@ export default class AMapCanvas {
     return this.layer.getMap()
   }
 
-  getCanvas() {
-    return this.canvas
+  getContainer() {
+    return this.container
   }
 
   dispose() {
     this.disposed = true
     if (this.layer) {
       this.layer.hide()
-      this.canvas = null
+      this.container = null
       this.layer = null
     }
   }

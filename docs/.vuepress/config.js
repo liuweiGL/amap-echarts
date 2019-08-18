@@ -1,7 +1,7 @@
 const path = require('path')
 
-console.log(path.resolve(__dirname, '../../src/assets'))
 module.exports = {
+  base: '/amap-echarts/',
   port: 8888,
   dest: 'docs-dist',
   title: 'amap-echarts',

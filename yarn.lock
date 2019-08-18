@@ -1610,6 +1610,18 @@ amap-echarts@^1.0.0:
     vue "^2.6.10"
     vue-amap "^0.5.10"
 
+amap-echarts@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/amap-echarts/-/amap-echarts-1.0.1.tgz#2434f3e374aad4fe0df647a3f7d02b4ee0a7d8d7"
+  integrity sha512-tawzue66XgzM3xA4GiUZkmT/AQ1vtFtTRQKwhgGj1Tkz4Z/vJ2AJnwB6FUT72iPYeVhyvJ/7lX57KQHIct9ZBA==
+  dependencies:
+    amap-echarts "^1.0.0"
+    core-js "^2.6.5"
+    echarts "^4.2.1"
+    events "^3.0.0"
+    vue "^2.6.10"
+    vue-amap "^0.5.10"
+
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/amdefine/download/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
@@ -2838,14 +2850,6 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     ripemd160 "^2.0.0"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
-
-cross-env@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.npm.taobao.org/cross-env/download/cross-env-5.2.0.tgz#6ecd4c015d5773e614039ee529076669b9d126f2"
-  integrity sha1-bs1MAV1Xc+YUA57lKQdmabnRJvI=
-  dependencies:
-    cross-spawn "^6.0.5"
-    is-windows "^1.0.0"
 
 cross-spawn@^5.0.1, cross-spawn@^5.1.0:
   version "5.1.0"
@@ -5334,7 +5338,7 @@ is-typedarray@~1.0.0:
   resolved "https://registry.npm.taobao.org/is-typedarray/download/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
   integrity sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
 
-is-windows@^1.0.0, is-windows@^1.0.2:
+is-windows@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npm.taobao.org/is-windows/download/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
   integrity sha1-0YUOuXkezRjmGCzhKjDzlmNLsZ0=

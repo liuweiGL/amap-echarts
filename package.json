@@ -1,6 +1,16 @@
 {
   "name": "amap-echarts",
-  "version": "1.0.0",
+  "keywords": [
+    "amap",
+    "echarts",
+    "chart",
+    "高德地图",
+    "高德",
+    "百度",
+    "图表"
+  ],
+  "repository": "https://github.com/liuweiGL/amap-echarts",
+  "version": "1.0.1",
   "license": "MIT",
   "private": false,
   "sideEffects": false,
@@ -15,7 +25,7 @@
     "lib": "rollup -c rollup.config.js"
   },
   "dependencies": {
-    "amap-echarts": "^1.0.0",
+    "amap-echarts": "^1.0.1",
     "core-js": "^2.6.5",
     "echarts": "^4.2.1",
     "events": "^3.0.0",

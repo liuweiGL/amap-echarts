@@ -14,7 +14,7 @@ export default {
     format: 'umd',
     sourcemap: true,
     globals: {
-      echarts: 'echarts'
+      'echarts/lib/echarts': 'echarts'
     }
   }
 }

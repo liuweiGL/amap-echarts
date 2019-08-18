@@ -11,7 +11,7 @@ const createConfig = theme => ({
     format: 'umd',
     sourcemap: false,
     globals: {
-      echarts: 'echarts'
+      'echarts/lib/echarts': 'echarts'
     }
   }
 })

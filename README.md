@@ -4,3 +4,5 @@
 
 
 ## 文档
+
+🚀 https://liuweigl.github.io/amap-echarts/

@@ -2,7 +2,9 @@
 
 ### 效果
 
-<lines />
+<client-only>
+  <lines />
+</client-only>
 
 ### 代码
 

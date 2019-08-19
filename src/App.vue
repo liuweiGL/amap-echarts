@@ -11,7 +11,7 @@
 import 'echarts/lib/chart/line'
 import 'echarts/lib/chart/lines'
 import 'echarts/lib/chart/effectScatter'
-import 'amap-echarts/dist/themes/macarons'
+import './libs/themes/macarons'
 import AMapEcharts from './libs/index'
 import countries from '@assets/data/countries'
 

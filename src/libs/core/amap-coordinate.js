@@ -5,10 +5,10 @@ export default class AMapCoordinate {
   }
   static create(ecModel) {
     const options = ecModel.getOption()
-    if (!options.getAMap) {
+    if (!options.getMap) {
       return
     }
-    const amapCoordinate = new AMapCoordinate(options.getAMap())
+    const amapCoordinate = new AMapCoordinate(options.getMap())
     ecModel.eachSeries(seriesModel => {
       if (seriesModel.get('coordinateSystem') === 'amap') {
         seriesModel.coordinateSystem = amapCoordinate

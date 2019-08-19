@@ -1,22 +1,23 @@
 import events from 'events'
 import echarts from 'echarts/lib/echarts'
-import AMapContainer from './amap-container'
+import _amapContainer from './amap-container'
 import EventNames from './amap-events'
-
-/**
- * 使用插件处理 echarts 参数
- * @param {object} options 参数
- */
-const process = options => {
-  AMapEcharts._plugins.forEach(plugin => (options = plugin(options)))
-  return options
-}
+import PluginBase, { PluginTypes } from '../plugins/base'
 
 export default class AMapEcharts extends events {
   static _configs = {}
-  static _plugins = []
-  static register(plugin) {
-    AMapEcharts._plugins.push(plugin)
+  static _plugins = {}
+  static registerPlugin(plugin) {
+    if (!(plugin instanceof PluginBase)) {
+      throw new Error(`plugin ${plugin.name} should inherit PluginBase`)
+    }
+    const type = plugin.getType()
+    const _plugins = AMapEcharts._plugins
+    if (_plugins[type]) {
+      _plugins[type].push(plugin)
+    } else {
+      _plugins[type] = [plugin]
+    }
   }
   static config(
     options = {
@@ -32,60 +33,82 @@ export default class AMapEcharts extends events {
     AMapEcharts._configs = options
   }
 
-  amapContainer = null
-  instance = null
-  options = null
-  disposed = false
+  _amapContainer = null
+  _instance = null
+  _options = null
+  _disposed = false
 
   constructor(map) {
     super()
-    this.amapContainer = new AMapContainer(map)
-    this.amapContainer.ready(() => {
+    this._amapContainer = new _amapContainer(map)
+    this._amapContainer.ready(() => {
       // 用户销毁的时候可能还没加载完，此处需要再次销毁
-      if (this.disposed) {
+      if (this._disposed) {
         this.dispose()
       }
-      this.amapContainer.setRender(this._update.bind(this))
       this._init()
     })
   }
 
   _init() {
-    const container = this.amapContainer.getContainer()
-    this.instance = echarts.init(
+    const container = this._amapContainer.getContainer()
+    this._instance = echarts.init(
       container,
       AMapEcharts._configs.theme,
       AMapEcharts._configs.opts
     )
-    this.on(EventNames.__REDENER__, this._update.bind(this))
-    this.emit(EventNames.INITED)
+    this._amapContainer.setRender(this._redener.bind(this))
+    // 内部重绘事件
+    this.on(EventNames.__REDENER__, this._redener.bind(this))
+    this.emit(EventNames.INIT)
+    this._execPlugin(PluginTypes.INIT)
   }
 
-  _update() {
-    this.instance.setOption(this.options)
+  _redener() {
+    this._execPlugin(PluginTypes.REDENER)
+    this._instance.setOption(this._options)
+    this.emit(EventNames.REDENER)
+  }
+
+  _execPlugin(type) {
+    const plugins = AMapEcharts._plugins[type]
+    plugins && plugins.forEach(plugin => plugin.apply(this))
+  }
+
+  getMap() {
+    return this._amapContainer.getMap()
+  }
+
+  getOption() {
+    return this._options
+  }
+
+  setOption(_options) {
+    this._options = {
+      ..._options,
+      getMap: () => this._amapContainer.getMap()
+    }
+    this._execPlugin(PluginTypes.UPDATE)
+    // 触发内部重绘事件
+    this.emit(EventNames.__REDENER__)
     this.emit(EventNames.UPDATE)
   }
 
-  setOption(options) {
-    this.options = {
-      ...process(options),
-      getAMap: () => this.amapContainer.getMap()
-    }
-    this.emit(EventNames.__REDENER__)
-  }
-
   dispose() {
-    this.isDisposed = true
-    this.options = null
-    if (this.instance) {
-      this.instance.dispose()
-      this.amapContainer.dispose()
-      this.instance = null
-      this.amapContainer = null
+    this._disposed = true
+    this._options = null
+    if (this._instance) {
+      this._instance.dispose()
+      this._amapContainer.dispose()
+      this.off(EventNames.__REDENER__)
+      this._instance = null
+      this._amapContainer = null
     }
+    this.emit(EventNames.DESTROY)
+    this._execPlugin(PluginTypes.DESTROY)
   }
 
   isDisposed() {
-    return this.disposed
+    return this._disposed
   }
 }

@@ -20,10 +20,17 @@ module.exports = {
   themeConfig: {
     docsDir: 'docs',
     repo: 'liuweiGL/amap-echarts',
+    sidebarDepth: 0,
     editLinks: true,
     editLinkText: '在 GitHub 上编辑此页',
     lastUpdated: '上次更新',
-    sidebarDepth: 0,
+    nav: [
+      {
+        text: '发布日志',
+        link:
+          'https://github.com/liuweiGL/amap-echarts/blob/master/CHANGELOG.md'
+      }
+    ],
     sidebar: [
       {
         title: '指南',

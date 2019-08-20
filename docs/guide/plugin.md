@@ -20,7 +20,7 @@ interface PluginBase {
 ```ts
 enum PluginType {
   INIT;  // 实例初始化之后调用
-  REDENER; // 每个实例每次重绘时调用
+  RENDER; // 每个实例每次重绘时调用
   UPDATE;  // 每个实例更新参数时调用
   DESTROY; // 每个实例销毁时调用
 }

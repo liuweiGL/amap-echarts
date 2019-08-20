@@ -1,10 +1,13 @@
-:: 构建类库
-yarn lib
+@echo off
+REM 构建类库
+call yarn lib
+call git add dist
+call git commit -m"chore: 构建类库"
 
-:: 更新版本
-yarn release
+REM 更新版本
+call yarn release
 
-:: 发布到 npm 仓库，需要事先登录
-nrm use npm
-npm publish
-nrm use taobao 
+REM 发布到 npm 仓库，需要事先登录
+call nrm use npm
+call npm publish
+call nrm use taobao

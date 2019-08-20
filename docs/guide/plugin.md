@@ -55,7 +55,7 @@ AMapEcharts.registerPlugin(new PluginDemo())
 
 把 `series` 中的 `animation` 属性设置为 `false`，防止动画导致 `echarts` 绘制与 `amap` 绘制不同步问题。
 
-属性设置：
+参数：
 
 ```ts
 interface InstanceConfigs {
@@ -67,8 +67,9 @@ interface InstanceConfigs {
 
 #### auto-visible
 
-自动控制图表是否显示或隐藏。
+自动控制图表是否显示或隐藏。   
 
+参数：
 ```ts
 interface InstanceConfigs {
   AutoVisible: {

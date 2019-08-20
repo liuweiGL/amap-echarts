@@ -12,6 +12,6 @@
 
 1. 灵活：`amap` 对象由外部传入，方便与 [vue-amap](https://elemefe.github.io/vue-amap/#/) 或者其他框架的 `amap` 组件配合使用。
 2. 轻量：类库内部只是接管了高德[自定义图层](https://lbs.amap.com/api/javascript-api/reference/self-own-layers)的加载、刷新时机、经纬度转换功能，`echarts` 可按需加载。
-3. ~~可扩展：提供简单的插件机制，统一处理图表 `options`、自定义 `amap` 行为~~（还没想好）。
+3. 可扩展：提供简单的插件机制，统一处理图表 `options`、自定义 `amap` 行为。
 
 

@@ -93,17 +93,28 @@ export default class AMapEcharts extends events {
       AMapEcharts._configs.theme,
       AMapEcharts._configs.opts
     )
-    this._amapContainer.setRender(this._redener.bind(this))
+    this._amapContainer.setRender(this._render.bind(this))
     // 内部重绘事件
-    this.on(EventName.__REDENER__, this._redener.bind(this))
-    this.emit(EventName.INIT)
+    this.on(EventName.__UPDATE__, this._update.bind(this))
     this._execPlugin(PluginType.INIT)
+    // 如果已经 setOption ，则需要调用插件
+    if (this._cachedOptions) {
+      this._execPlugin(PluginType.UPDATE)
+    }
+    this.emit(EventName.INIT)
   }
 
-  _redener() {
-    this._execPlugin(PluginType.REDENER)
+  _render() {
+    this._execPlugin(PluginType.RENDER)
+    // this._instance.resize()
     this._instance.setOption(this._cachedOptions)
-    this.emit(EventName.REDENER)
+    this.emit(EventName.RENDER)
+  }
+
+  _update() {
+    this._execPlugin(PluginType.UPDATE)
+    this._instance.setOption(this._cachedOptions)
+    this.emit(EventName.UPDATE)
   }
 
   _execPlugin(type) {
@@ -159,16 +170,12 @@ export default class AMapEcharts extends events {
       ..._cachedOptions,
       getMap: () => this._amapContainer.getMap()
     }
-    this._execPlugin(PluginType.UPDATE)
-    // 触发内部重绘事件
-    this.emit(EventName.__REDENER__)
-    this.emit(EventName.UPDATE)
+    // 触发内部更新事件
+    this.emit(EventName.__UPDATE__)
   }
 
   dispose() {
-    this.emit(EventName.DESTROY)
     this._execPlugin(PluginType.DESTROY)
-
     this._disposed = true
     if (this._instance) {
       this._instance.dispose()
@@ -177,6 +184,7 @@ export default class AMapEcharts extends events {
       this.removeAllListeners()
     }
     this._clear()
+    this.emit(EventName.DESTROY)
   }
 
   isDisposed() {

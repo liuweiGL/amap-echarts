@@ -31,7 +31,7 @@ interface GlobalConfigs {
 ### 构造函数
 
 ```ts
-new AMapEcharts(map, GlobalConfigs);
+new AMapEcharts(map, globalConfigs);
 ```
 
 ### 实例方法

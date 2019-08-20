@@ -1,7 +1,7 @@
 /**
  * 插件基类
  */
-import EventNames from '../core/amap-events'
+import EventName from '../core/amap-events'
 
 const toString = obj => {
   const values = []
@@ -14,11 +14,11 @@ const toString = obj => {
 }
 
 // 为了让 `vscode` 有提示
-export const PluginTypes = Object.assign({}, EventNames)
+export const PluginType = Object.assign({}, EventName)
 
-for (const key in PluginTypes) {
-  if (PluginTypes.hasOwnProperty(key) && key.indexOf('__') > -1) {
-    delete PluginTypes[key]
+for (const key in PluginType) {
+  if (PluginType.hasOwnProperty(key) && key.indexOf('__') > -1) {
+    delete PluginType[key]
   }
 }
 
@@ -26,10 +26,10 @@ export default class PluginBase {
   constructor() {
     const type = this.getType()
     if (type) {
-      if (!PluginTypes[type.toUpperCase()]) {
+      if (!PluginType[type.toUpperCase()]) {
         throw new Error(
           `type property is '${type}', but expect one of [ ${toString(
-            PluginTypes
+            PluginType
           )} ]`
         )
       }

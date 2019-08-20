@@ -1,8 +1,8 @@
 import events from 'events'
 import echarts from 'echarts/lib/echarts'
 import _amapContainer from './amap-container'
-import EventNames from './amap-events'
-import PluginBase, { PluginTypes } from '../plugins/base'
+import EventName from './amap-events'
+import PluginBase, { PluginType } from '../plugins/base'
 
 /**
  * 注册插件
@@ -57,7 +57,7 @@ export default class AMapEcharts extends events {
   static _configs = {}
   static _plugins = {}
   static config = config
-  static removePlugin = unRegister
+  static unRegisterPlugin = unRegister
   static registerPlugin(plugins) {
     if (Array.isArray(plugins)) {
       plugins.forEach(register)
@@ -80,6 +80,7 @@ export default class AMapEcharts extends events {
       // 用户销毁的时候可能还没加载完，此处需要再次销毁
       if (this._disposed) {
         this.dispose()
+        return
       }
       this._init()
     })
@@ -94,15 +95,15 @@ export default class AMapEcharts extends events {
     )
     this._amapContainer.setRender(this._redener.bind(this))
     // 内部重绘事件
-    this.on(EventNames.__REDENER__, this._redener.bind(this))
-    this.emit(EventNames.INIT)
-    this._execPlugin(PluginTypes.INIT)
+    this.on(EventName.__REDENER__, this._redener.bind(this))
+    this.emit(EventName.INIT)
+    this._execPlugin(PluginType.INIT)
   }
 
   _redener() {
-    this._execPlugin(PluginTypes.REDENER)
+    this._execPlugin(PluginType.REDENER)
     this._instance.setOption(this._cachedOptions)
-    this.emit(EventNames.REDENER)
+    this.emit(EventName.REDENER)
   }
 
   _execPlugin(type) {
@@ -110,20 +111,23 @@ export default class AMapEcharts extends events {
     plugins && plugins.forEach(plugin => plugin.apply(this))
   }
 
-  getConfigs() {
-    return this._configs
+  _clear() {
+    this._amapContainer = null
+    this._instance = null
+    this._cachedOptions = null
+    this._configs = null
   }
 
   getMap() {
     return this._amapContainer.getMap()
   }
 
-  getzIndex() {
-    return this._amapContainer.getzIndex()
+  getZIndex() {
+    return this._amapContainer.getZIndex()
   }
 
-  setzIndex(zIndex) {
-    this._amapContainer.setzIndex(zIndex)
+  setZIndex(zIndex) {
+    this._amapContainer.setZIndex(zIndex)
   }
 
   setOpacity(opacity) {
@@ -138,6 +142,14 @@ export default class AMapEcharts extends events {
     this._amapContainer.hide()
   }
 
+  getConfigs() {
+    return this._configs
+  }
+
+  config(configs) {
+    this._configs = configs
+  }
+
   getOption() {
     return this._cachedOptions
   }
@@ -147,24 +159,24 @@ export default class AMapEcharts extends events {
       ..._cachedOptions,
       getMap: () => this._amapContainer.getMap()
     }
-    this._execPlugin(PluginTypes.UPDATE)
+    this._execPlugin(PluginType.UPDATE)
     // 触发内部重绘事件
-    this.emit(EventNames.__REDENER__)
-    this.emit(EventNames.UPDATE)
+    this.emit(EventName.__REDENER__)
+    this.emit(EventName.UPDATE)
   }
 
   dispose() {
+    this.emit(EventName.DESTROY)
+    this._execPlugin(PluginType.DESTROY)
+
     this._disposed = true
-    this._cachedOptions = null
     if (this._instance) {
       this._instance.dispose()
       this._amapContainer.dispose()
+      // 解除所有事件
       this.removeAllListeners()
-      this._instance = null
-      this._amapContainer = null
     }
-    this.emit(EventNames.DESTROY)
-    this._execPlugin(PluginTypes.DESTROY)
+    this._clear()
   }
 
   isDisposed() {

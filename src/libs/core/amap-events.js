@@ -1,7 +1,7 @@
 /**
  * 事件名称，带下划线的表示内部使用
  */
-const EventNames = {
+const EventName = {
   // 内部重绘监听
   __REDENER__: '__reRedener__',
   // 高德地图插件加载完毕，第一次绘制完成
@@ -14,4 +14,4 @@ const EventNames = {
   DESTROY: 'destroy'
 }
 
-export default EventNames
+export default EventName

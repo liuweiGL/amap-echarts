@@ -1,5 +1,5 @@
-import EventNames from '../core/amap-events'
-import PluginBase, { PluginTypes } from './base'
+import EventName from '../core/amap-events'
+import PluginBase, { PluginType } from './base'
 
 /**
  * 自动显示或隐藏 `echarts` 图表
@@ -10,7 +10,7 @@ export default class AutoVisible extends PluginBase {
   }
 
   getType() {
-    return PluginTypes.INIT
+    return PluginType.INIT
   }
 
   apply(instance) {
@@ -25,7 +25,7 @@ export default class AutoVisible extends PluginBase {
       instance[this.in(zoom, zooms) ? 'show' : 'hide']()
     }
     map.on('zoomend', handler)
-    instance.on(EventNames.DESTROY, () => {
+    instance.on(EventName.DESTROY, () => {
       map.off('zoomend', handler)
       map = null
     })

@@ -57,11 +57,11 @@ export default class AMapContainer {
     return this.layer.getMap()
   }
 
-  getzIndex() {
+  getZIndex() {
     return this.layer.getzIndex()
   }
 
-  setzIndex(zIndex) {
+  setZIndex(zIndex) {
     this.layer.setzIndex(zIndex)
   }
 

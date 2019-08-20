@@ -37,8 +37,7 @@ module.exports = {
           '/guide/plugin',
           '/guide/theme',
           '/guide/tree-shaking',
-          '/guide/procedure',
-          '/guide/todo'
+          '/guide/procedure'
         ]
       },
       {

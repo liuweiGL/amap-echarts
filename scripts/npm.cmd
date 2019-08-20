@@ -14,3 +14,9 @@ call nrm use taobao
 
 REM 推送 git
 call git push origin --tags
+
+REM 合并 master
+call git checkout master
+call git merge dev
+call git push
+call git checkout dev

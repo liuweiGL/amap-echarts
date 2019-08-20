@@ -2,8 +2,9 @@
 
 ### 效果
 
-<effect-scatter/>
-
+<client-only>
+  <effect-scatter/>
+</client-only>
 ### 代码
 
 <<< @/docs/.vuepress/components/EffectScatter.vue

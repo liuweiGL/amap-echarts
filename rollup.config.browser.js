@@ -9,6 +9,7 @@ export default {
   input: 'src/libs/index.js',
   external: ['echarts/lib/echarts'],
   output: {
+    exports: 'named',
     name: 'AMapEcharts',
     file: pkg.browser,
     format: 'umd',

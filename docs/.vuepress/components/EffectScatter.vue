@@ -1,7 +1,10 @@
 <template>
-  <client-only>
-    <el-amap :events="events" :zoom="zoom" :center="center" :map-style="mapStyle" />
-  </client-only>
+  <el-amap
+    :events="events"
+    :zoom="zoom"
+    :center="center"
+    :map-style="mapStyle"
+  />
 </template>
 
 <script>
@@ -52,7 +55,11 @@ export default {
   },
   methods: {
     createScatterChart(map) {
-      this.ae = new AMapEcharts(map)
+      this.ae = new AMapEcharts(map, {
+        AutoVisible: {
+          zooms: [0, 5]
+        }
+      })
       this.ae.setOption({
         series: [
           {

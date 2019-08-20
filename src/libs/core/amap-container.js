@@ -8,6 +8,7 @@ export default class AMapContainer {
   container = null
   layer = null
   promise = null
+  visible = true
   disposed = false
 
   constructor(map) {
@@ -54,6 +55,32 @@ export default class AMapContainer {
 
   getMap() {
     return this.layer.getMap()
+  }
+
+  getZIndex() {
+    return this.layer.getzIndex()
+  }
+
+  setZIndex(zIndex) {
+    this.layer.setzIndex(zIndex)
+  }
+
+  setOpacity(opacity) {
+    this.layer.setOpacity(opacity)
+  }
+
+  show() {
+    if (!this.visible) {
+      this.visible = true
+      this.layer.show()
+    }
+  }
+
+  hide() {
+    if (this.visible) {
+      this.visible = false
+      this.layer.hide()
+    }
   }
 
   getContainer() {

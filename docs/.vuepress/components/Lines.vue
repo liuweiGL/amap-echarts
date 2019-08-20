@@ -1,7 +1,10 @@
 <template>
-  <client-only>
-    <el-amap :events="events" :zoom="zoom" :center="center" :map-style="mapStyle"></el-amap>
-  </client-only>
+  <el-amap
+    :events="events"
+    :zoom="zoom"
+    :center="center"
+    :map-style="mapStyle"
+  ></el-amap>
 </template>
 
 <script>

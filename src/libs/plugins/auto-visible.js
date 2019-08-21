@@ -15,7 +15,7 @@ export default class AutoVisible extends PluginBase {
 
   apply(instance) {
     let map = instance.getMap()
-    const configs = instance.getConfigs()
+    const configs = instance.getConfig()
     if (!configs || !configs.AutoVisible || !configs.AutoVisible.zooms) {
       return
     }

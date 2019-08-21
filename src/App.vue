@@ -11,11 +11,11 @@
 import 'echarts/lib/chart/line'
 import 'echarts/lib/chart/lines'
 import 'echarts/lib/chart/effectScatter'
-import './libs/themes/macarons'
+import macarons from './libs/themes/macarons'
 import AMapEcharts from './libs/index'
 import countries from '@assets/data/countries'
 
-AMapEcharts.config({ theme: 'macarons' })
+AMapEcharts.config({ theme: macarons })
 
 const scatterData = []
 const linesData = []

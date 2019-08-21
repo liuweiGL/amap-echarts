@@ -16,3 +16,6 @@ REM 部署到 https://<USERNAME>.github.io/<REPO>
 call git push -f https://github.com/liuweiGL/amap-echarts.git master:gh-pages
 
 call cd ..
+
+REM 可能安装了新的版本
+call git add package.json yarn.lock

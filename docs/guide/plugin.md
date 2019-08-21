@@ -39,14 +39,14 @@ export default class PluginDemo extends PluginBase {
 
   // instance: AMapEcharts 实例
   apply(instance) {
-    const configs = instance.getConfig()
-    const pluginConfig = configs ? configs['PluginDemo'] : null
+    const configs = instance.getConfig();
+    const pluginConfig = configs ? configs['PluginDemo'] : null;
     // do something
   }
 }
 
 // 使用插件
-AMapEcharts.registerPlugin(new PluginDemo())
+AMapEcharts.registerPlugin(new PluginDemo());
 ```
 
 ### 内置插件
@@ -67,9 +67,10 @@ interface InstanceConfigs {
 
 #### auto-visible
 
-自动控制图表是否显示或隐藏。   
+自动控制图表是否显示或隐藏。
 
 参数：
+
 ```ts
 interface InstanceConfigs {
   AutoVisible: {
@@ -80,6 +81,11 @@ interface InstanceConfigs {
 }
 ```
 
+:::tip
+
+`zoom` 的判断方式为：zooms[0] <= zoom < zooms[1]
+
+:::
 
 ### TODO
 

@@ -3,14 +3,23 @@
   "keywords": [
     "amap",
     "echarts",
+    "amap-echarts",
+    "echarts-amap",
+    "echarts-map",
+    "map-echarts",
     "chart",
+    "vue-amap",
+    "vue-echarts",
+    "react-amap",
+    "vue",
+    "react",
     "高德地图",
     "高德",
     "百度",
     "图表"
   ],
   "repository": "https://github.com/liuweiGL/amap-echarts",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "license": "MIT",
   "private": false,
   "sideEffects": false,
@@ -23,7 +32,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "lib": "rollup -c rollup.config.js",
-    "release": "standard-version"
+    "release": "scripts/npm.cmd"
   },
   "dependencies": {
     "amap-echarts": "^1.1.0",

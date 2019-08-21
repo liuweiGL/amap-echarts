@@ -8,7 +8,7 @@ export default class ForbidAnimation extends PluginBase {
     return PluginType.UPDATE
   }
   apply(instance) {
-    const configs = instance.getConfigs()
+    const configs = instance.getConfig()
     if (configs && configs.ForbidAnimation === false) {
       return
     }

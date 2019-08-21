@@ -1,5 +1,3 @@
-import echarts from 'echarts/lib/echarts'
-
 const colorPalette = [
   '#E01F54',
   '#001852',
@@ -23,7 +21,9 @@ const colorPalette = [
   '#38b6b6'
 ]
 
-const theme = {
+export default {
+  name: 'roma',
+
   color: colorPalette,
 
   visualMap: {
@@ -60,5 +60,3 @@ const theme = {
     }
   }
 }
-
-echarts.registerTheme('roma', theme)

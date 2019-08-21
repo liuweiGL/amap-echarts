@@ -1,5 +1,7 @@
 @echo off
+
 REM 打包文档
+call yarn add amap-echarts@latest
 call yarn docs:build
 
 

@@ -11,7 +11,14 @@ export default class AMapContainer {
   visible = true
   disposed = false
 
-  constructor(map) {
+  constructor(
+    options = {
+      map: null,
+      zIndex: 0,
+      opacity: 1,
+      zooms: [0, 0]
+    }
+  ) {
     this.promise = new Promise((resolve, reject) => {
       try {
         AMap.plugin('AMap.CustomLayer', () => {
@@ -20,9 +27,9 @@ export default class AMapContainer {
           }
           const container = document.createElement('div')
           this.layer = new AMap.CustomLayer(container, {
-            map,
             zIndex: 120,
-            alwaysRender: false
+            alwaysRender: false,
+            ...options
           })
           this.container = container
           this._setSize()

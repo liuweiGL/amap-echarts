@@ -6,7 +6,7 @@ import PluginBase, { PluginType } from './base'
  */
 export default class AutoVisible extends PluginBase {
   in(zoom, zooms) {
-    return zoom >= zooms[0] && zoom <= zooms[1]
+    return zoom >= zooms[0] && zoom < zooms[1]
   }
 
   getType() {

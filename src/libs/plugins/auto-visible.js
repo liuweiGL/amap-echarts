@@ -24,6 +24,8 @@ export default class AutoVisible extends PluginBase {
       const zoom = map.getZoom()
       instance[this.in(zoom, zooms) ? 'show' : 'hide']()
     }
+    // fix: 初始化时显示不在范围内的图表
+    handler()
     map.on('zoomend', handler)
     instance.on(EventName.DESTROY, () => {
       map.off('zoomend', handler)

@@ -1,5 +1,3 @@
-import echarts from 'echarts/lib/echarts'
-
 const colorPalette = [
   '#C1232B',
   '#27727B',
@@ -18,7 +16,9 @@ const colorPalette = [
   '#26C0C0'
 ]
 
-const theme = {
+export default {
+  name: 'infographic',
+
   color: colorPalette,
 
   title: {
@@ -191,5 +191,3 @@ const theme = {
     }
   }
 }
-
-echarts.registerTheme('infographic', theme)

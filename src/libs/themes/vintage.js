@@ -1,5 +1,3 @@
-import echarts from 'echarts/lib/echarts'
-
 var colorPalette = [
   '#d87c7c',
   '#919e8b',
@@ -12,10 +10,11 @@ var colorPalette = [
   '#724e58',
   '#4b565b'
 ]
-echarts.registerTheme('vintage', {
+export default {
+  name: 'vintage',
   color: colorPalette,
   backgroundColor: '#fef8ef',
   graph: {
     color: colorPalette
   }
-})
+}

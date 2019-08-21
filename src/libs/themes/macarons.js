@@ -1,5 +1,3 @@
-import echarts from 'echarts/lib/echarts'
-
 const colorPalette = [
   '#2ec7c9',
   '#b6a2de',
@@ -23,7 +21,9 @@ const colorPalette = [
   '#c14089'
 ]
 
-const theme = {
+export default {
+  name: 'macarons',
+
   color: colorPalette,
 
   title: {
@@ -188,5 +188,3 @@ const theme = {
     }
   }
 }
-
-echarts.registerTheme('macarons', theme)

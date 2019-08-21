@@ -1,5 +1,3 @@
-import echarts from 'echarts/lib/echarts'
-
 const colorPalette = [
   '#c12e34',
   '#e6b600',
@@ -11,7 +9,9 @@ const colorPalette = [
   '#32a487'
 ]
 
-const theme = {
+export default {
+  name: 'shine',
+
   color: colorPalette,
 
   title: {
@@ -139,4 +139,3 @@ const theme = {
     }
   }
 }
-echarts.registerTheme('shine', theme)

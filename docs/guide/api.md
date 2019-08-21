@@ -9,8 +9,8 @@
 | Function | 说明 | 参数类型 |
 | --- | --- | --- |
 | config | 配置 `echarts` 全局属性 | [GlobalConfigs](#GlobalConfigs) |
-| registerPlugin | 注册插件 | [PluginBase](#PluginBase) \|\| array[[PluginBase](#PluginBase)] |
-| unRegisterPlugin | 注销插件 | string \|\| array[string]（插件名称） |
+| registerPlugin | 注册插件 | [PluginBase](#PluginBase) \| array[[PluginBase](#PluginBase)] |
+| unRegisterPlugin | 注销插件 | string \| array[string]（插件名称） |
 
 #### GlobalConfigs
 
@@ -44,7 +44,7 @@ new AMapEcharts(map, globalConfigs);
 | setOpacity | 设置 `echarts` 容器的 `opacity` | number |
 | show | 显示 `echarts` 容器 | - |
 | hide | 隐藏 `echarts` 容器 | - |
-| getConfigs | 获取实例的配置项（[InstanceConfigs](#InstanceConfigs)） | - |
+| getConfig | 获取实例的配置项（[InstanceConfigs](#InstanceConfigs)） | - |
 | config | 配置项，目前主要用于配置插件 | [InstanceConfigs](#InstanceConfigs) |
 | getOption | 获取 `setOption` 方法设置的参数 | - |
 | setOption | `echarts` 的 `setOption` 方法代理 | 同 [echarts#setOption](https://echarts.baidu.com/option.html#title) |
@@ -53,10 +53,16 @@ new AMapEcharts(map, globalConfigs);
 
 #### InstanceConfigs
 
-实例配置项，目前主要用于配置插件：
+实例配置项：
 
 ```ts
 interface InstanceConfigs {
+  // 图表绘制层配置
+  zIndex: number; // 层级
+  opacity: 1; // 透明度
+  zooms: [0, 0]; // 图层允许缩放的范围
+
+  // 插件配置
   ForbidAnimation: boolean;
   AutoVisible: {
     zooms: [number, number];

@@ -6,6 +6,7 @@ const createConfig = theme => ({
   ...rollupBaseConfig,
   input: `src/libs/themes/${theme}`,
   output: {
+    name: theme.replace('.js', ''),
     exports: 'named',
     format: 'umd',
     dir: 'dist/themes',

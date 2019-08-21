@@ -19,3 +19,5 @@ call cd ..
 
 REM 可能安装了新的版本
 call git add package.json yarn.lock
+call git commit -m"chore: 更新 docs 依赖"
+call git push

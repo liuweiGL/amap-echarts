@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/liuweiGL/amap-echarts/compare/v1.3.0...v1.4.0) (2019-08-21)
+
+
+### Features
+
+* **plugin:** AutoVisible 插件调整 zoom 的判断方式 ([ca1ff00](https://github.com/liuweiGL/amap-echarts/commit/ca1ff00))
+
 ## [1.3.0](https://github.com/liuweiGL/amap-echarts/compare/v1.2.0...v1.3.0) (2019-08-21)
 
 

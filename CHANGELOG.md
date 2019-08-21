@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/liuweiGL/amap-echarts/compare/v1.4.0...v1.4.1) (2019-08-21)
+
+
+### Bug Fixes
+
+* **plugin:** AutoVisible 初始化时显示不在范围内的图表 ([364c779](https://github.com/liuweiGL/amap-echarts/commit/364c779))
+
 ## [1.4.0](https://github.com/liuweiGL/amap-echarts/compare/v1.3.0...v1.4.0) (2019-08-21)
 
 

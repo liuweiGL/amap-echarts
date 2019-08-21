@@ -19,7 +19,7 @@
     "图表"
   ],
   "repository": "https://github.com/liuweiGL/amap-echarts",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "license": "MIT",
   "private": false,
   "sideEffects": false,

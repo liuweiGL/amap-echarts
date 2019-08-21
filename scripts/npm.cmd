@@ -7,11 +7,9 @@ call git commit -m"chore: 类库发布前构建"
 REM 更新版本
 call yarn standard-version
 
-REM 发布到 npm 仓库，需要事先登录
-call nrm use npm
-call npm login
-call npm publish
-call nrm use taobao
+REM 发布到 npm 仓库
+call npm login --registry="https://registry.npmjs.org/"
+call npm publish --registry="https://registry.npmjs.org/"
 
 REM 推送 git
 call git push origin --tags

@@ -32,7 +32,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "lib": "rollup -c rollup.config.js",
-    "release": "standard-version"
+    "release": "scripts/npm.cmd"
   },
   "dependencies": {
     "amap-echarts": "^1.1.0",

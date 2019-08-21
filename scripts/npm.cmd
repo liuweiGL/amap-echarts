@@ -5,7 +5,7 @@ call git add dist
 call git commit -m"chore: 类库发布前构建"
 
 REM 更新版本
-call yarn release
+call yarn standard-version
 
 REM 发布到 npm 仓库，需要事先登录
 call nrm use npm
@@ -20,3 +20,6 @@ call git checkout master
 call git merge dev
 call git push
 call git checkout dev
+
+REM 更新文档
+call ./docs.cmd

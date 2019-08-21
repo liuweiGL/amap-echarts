@@ -50,7 +50,12 @@ const config = (
     }
   }
 ) => {
-  AMapEcharts._configs = options
+  let { theme } = options
+  if (theme && typeof theme === 'object') {
+    echarts.registerTheme(theme.name, theme)
+    theme = theme.name
+  }
+  AMapEcharts._configs = { theme, ...options }
 }
 
 export default class AMapEcharts extends events {
@@ -75,7 +80,10 @@ export default class AMapEcharts extends events {
   constructor(map, configs) {
     super()
     this._configs = configs
-    this._amapContainer = new _amapContainer(map)
+    this._amapContainer = new _amapContainer({
+      map,
+      ...config
+    })
     this._amapContainer.ready(() => {
       // 用户销毁的时候可能还没加载完，此处需要再次销毁
       if (this._disposed) {
@@ -153,7 +161,7 @@ export default class AMapEcharts extends events {
     this._amapContainer.hide()
   }
 
-  getConfigs() {
+  getConfig() {
     return this._configs
   }
 

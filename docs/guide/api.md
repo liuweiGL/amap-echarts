@@ -18,7 +18,7 @@
 
 ```ts
 interface GlobalConfigs {
-  theme: string;
+  theme: string | object;
   opts: {
     devicePixelRatio: number;
     renderer: 'canvas' | 'svg';

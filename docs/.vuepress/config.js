@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  // base: '/amap-echarts/',
+  base: '/amap-echarts/',
   port: 8888,
   dest: 'docs-dist',
   title: 'amap-echarts',

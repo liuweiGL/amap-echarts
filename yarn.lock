@@ -1671,6 +1671,18 @@ amap-echarts@^1.1.0:
     vue "^2.6.10"
     vue-amap "^0.5.10"
 
+amap-echarts@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.npm.taobao.org/amap-echarts/download/amap-echarts-1.3.0.tgz#7c5386734d95952372a6d681117cc39c319271ea"
+  integrity sha1-fFOGc02VlSNyptaBEXzDnDGSceo=
+  dependencies:
+    amap-echarts "^1.1.0"
+    core-js "^2.6.5"
+    echarts "^4.2.1"
+    events "^3.0.0"
+    vue "^2.6.10"
+    vue-amap "^0.5.10"
+
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/amdefine/download/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"

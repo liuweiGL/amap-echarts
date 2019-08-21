@@ -5,14 +5,11 @@ import rollupBaseConfig from './rollup.config.base'
 const createConfig = theme => ({
   ...rollupBaseConfig,
   input: `src/libs/themes/${theme}`,
-  external: ['echarts/lib/echarts'],
   output: {
-    dir: 'dist/themes',
+    exports: 'named',
     format: 'umd',
-    sourcemap: false,
-    globals: {
-      'echarts/lib/echarts': 'echarts'
-    }
+    dir: 'dist/themes',
+    sourcemap: false
   }
 })
 

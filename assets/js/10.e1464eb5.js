@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{455:function(t,e,n){"use strict";n.r(e);var i={name:"DocV1"},s=n(1),a=Object(s.a)(i,function(){var t=this.$createElement;return(this._self._c||t)("a",{attrs:{href:this.$site.themeConfig.nav[0].link}},[this._v(this._s(this.$site.themeConfig.nav[0].link))])},[],!1,null,null,null);e.default=a.exports}}]);

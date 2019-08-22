@@ -1,5 +1,4 @@
 const path = require('path')
-const pkg = require('../../package.json')
 
 module.exports = {
   base: '/amap-echarts/',
@@ -19,7 +18,6 @@ module.exports = {
     }
   },
   themeConfig: {
-    version: pkg.version,
     docsDir: 'docs',
     repo: 'liuweiGL/amap-echarts',
     sidebarDepth: 0,

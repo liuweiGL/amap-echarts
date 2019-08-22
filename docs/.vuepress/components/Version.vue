@@ -1,5 +1,5 @@
 <template>
-  <Badge>{{ version }}</Badge>
+  <Badge vertical="middle" :text="version" />
 </template>
 
 <script>

@@ -1,4 +1,5 @@
 const path = require('path')
+const pkg = require('../../package.json')
 
 module.exports = {
   base: '/amap-echarts/',
@@ -6,18 +7,19 @@ module.exports = {
   dest: 'docs-dist',
   title: 'amap-echarts',
   description: '在高德地图上展示 echarts 图表',
-  plugins: ['flowchart'],
   markdown: {
     anchor: { permalink: true }
   },
   configureWebpack: {
     resolve: {
       alias: {
+        '@': path.resolve(__dirname, '../../'),
         '@assets': path.resolve(__dirname, '../../src/assets')
       }
     }
   },
   themeConfig: {
+    version: pkg.version,
     docsDir: 'docs',
     repo: 'liuweiGL/amap-echarts',
     sidebarDepth: 0,
@@ -25,6 +27,7 @@ module.exports = {
     editLinkText: '在 GitHub 上编辑此页',
     lastUpdated: '上次更新',
     nav: [
+      { text: '1.x', link: 'https://liuweigl.github.io/amap-echarts-doc-v1/' },
       {
         text: '发布日志',
         link:
@@ -41,10 +44,9 @@ module.exports = {
           '/guide/getting-started',
           '/guide/api',
           '/guide/event',
-          '/guide/plugin',
           '/guide/theme',
           '/guide/tree-shaking',
-          '/guide/procedure'
+          '/guide/QA'
         ]
       },
       {

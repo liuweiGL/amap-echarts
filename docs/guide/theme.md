@@ -6,7 +6,8 @@
 import macarons from 'amap-echarts/dist/themes/macarons';
 import AMapEcharts from 'amap-echarts';
 
-AMapEcharts.config({
-  theme: macarons
-});
+async function useAwait() {
+  const ae = await AMapEcharts.init(map, macarons);
+  // do something
+}
 ```

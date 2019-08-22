@@ -34,8 +34,8 @@ export default {
     }
   },
   methods: {
-    createLinesChart(map) {
-      this.ae = new AMapEcharts(map)
+    async createLinesChart(map) {
+      this.ae = await AMapEcharts.init(map)
       const data = ['a', 'b', 'c', 'd']
       const lines = [['a', 'b'], ['d', 'c'], ['c', 'b'], ['a', 'f']]
       const color = [

@@ -15,8 +15,6 @@ import macarons from 'amap-echarts/dist/themes/macarons'
 import AMapEcharts from 'amap-echarts'
 import countries from '@assets/data/countries'
 
-AMapEcharts.config({ theme: macarons })
-
 const scatterData = []
 const linesData = []
 
@@ -54,12 +52,8 @@ export default {
     }
   },
   methods: {
-    createScatterChart(map) {
-      this.ae = new AMapEcharts(map, {
-        AutoVisible: {
-          zooms: [0, 5]
-        }
-      })
+    async createScatterChart(map) {
+      this.ae = await AMapEcharts.init(map, macarons)
       this.ae.setOption({
         series: [
           {
@@ -67,6 +61,7 @@ export default {
             coordinateSystem: 'amap',
             zlevel: 1,
             symbolSize: 8,
+            animation: false,
             rippleEffect: {
               period: 4,
               brushType: 'fill',
@@ -86,6 +81,7 @@ export default {
             zlevel: 2,
             symbol: 'none',
             silent: true,
+            animation: false,
             effect: {
               period: 4,
               show: true,

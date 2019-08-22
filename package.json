@@ -36,7 +36,7 @@
     "release": "scripts/npm.cmd && scripts/docs.cmd"
   },
   "dependencies": {
-    "amap-echarts": "^1.4.1",
+    "amap-echarts": "^2.0.0",
     "core-js": "^2.6.5",
     "echarts": "^4.2.1",
     "events": "^3.0.0",

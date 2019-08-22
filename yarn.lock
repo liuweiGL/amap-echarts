@@ -1695,6 +1695,18 @@ amap-echarts@^1.4.1:
     vue "^2.6.10"
     vue-amap "^0.5.10"
 
+amap-echarts@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/amap-echarts/-/amap-echarts-2.0.0.tgz#96091153412b08b7a795358318b538f0fe6f45b4"
+  integrity sha512-20xU4JoyKePotgJj1mWv1Qz7h3Drsk1K744YMlhp262Qxaktxmmybeot9T5AR5QJ554ErhSRu1DNpj7Dgm2eFg==
+  dependencies:
+    amap-echarts "^1.4.1"
+    core-js "^2.6.5"
+    echarts "^4.2.1"
+    events "^3.0.0"
+    vue "^2.6.10"
+    vue-amap "^0.5.10"
+
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/amdefine/download/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"

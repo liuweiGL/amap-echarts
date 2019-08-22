@@ -13,7 +13,7 @@ call git add -A
 call git commit -m"docs: update"
 
 REM 部署到 https://<USERNAME>.github.io/<REPO>
-call git push -f https://github.com/liuweiGL/amap-echarts-doc-v1.git master:master
+call git push -f https://github.com/liuweiGL/amap-echarts-doc-v1.git master:gh-pages
 
 call cd ..
 

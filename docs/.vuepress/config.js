@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  base: '/amap-echarts/',
+  base: '/amap-echarts-doc-v1/',
   port: 8888,
   dest: 'docs-dist',
   title: 'amap-echarts',
@@ -13,6 +13,7 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
+        '@': path.resolve(__dirname, '../../'),
         '@assets': path.resolve(__dirname, '../../src/assets')
       }
     }
@@ -25,6 +26,7 @@ module.exports = {
     editLinkText: '在 GitHub 上编辑此页',
     lastUpdated: '上次更新',
     nav: [
+      { text: '2.x', link: 'https://liuweigl.github.io/amap-echarts/' },
       {
         text: '发布日志',
         link:

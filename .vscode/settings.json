@@ -1,3 +1,6 @@
 {
-  "liveServer.settings.root": "/docs-dist"
+  "liveServer.settings.root": "/docs-dist",
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.packageManager": "yarn"
 }

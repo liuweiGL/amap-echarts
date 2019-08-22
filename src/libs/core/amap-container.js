@@ -5,35 +5,20 @@
  * @see https://lbs.amap.com/api/javascript-api/reference/self-own-layers
  */
 export default class AMapContainer {
-  container = null
-  layer = null
-  promise = null
-  visible = true
-  disposed = false
-
-  constructor(
-    options = {
-      map: null,
-      zIndex: 0,
-      opacity: 1,
-      zooms: [0, 0]
-    }
-  ) {
-    this.promise = new Promise((resolve, reject) => {
+  static init(map) {
+    return new Promise((resolve, reject) => {
       try {
         AMap.plugin('AMap.CustomLayer', () => {
-          if (this.disposed) {
-            return
-          }
-          const container = document.createElement('div')
-          this.layer = new AMap.CustomLayer(container, {
+          const instance = new AMapContainer()
+          const dom = document.createElement('div')
+          instance.layer = new AMap.CustomLayer(dom, {
+            map,
             zIndex: 120,
-            alwaysRender: false,
-            ...options
+            alwaysRender: false
           })
-          this.container = container
-          this._setSize()
-          resolve()
+          instance.dom = dom
+          instance.resize()
+          resolve(instance)
         })
       } catch (error) {
         reject(error)
@@ -41,23 +26,20 @@ export default class AMapContainer {
     })
   }
 
-  _setSize() {
+  dom = null
+  layer = null
+  visible = true
+
+  resize() {
     const size = this.getMap().getSize()
     const width = size.getWidth()
     const height = size.getHeight()
-    this.container.style.width = width + 'px'
-    this.container.style.height = height + 'px'
-  }
-
-  ready(callback) {
-    this.promise.then(callback).catch(console.error)
+    this.dom.style.width = width + 'px'
+    this.dom.style.height = height + 'px'
   }
 
   setRender(render) {
-    this.layer.render = () => {
-      this._setSize()
-      render()
-    }
+    this.layer.render = render
   }
 
   getMap() {
@@ -90,20 +72,13 @@ export default class AMapContainer {
     }
   }
 
-  getContainer() {
-    return this.container
+  getDom() {
+    return this.dom
   }
 
   dispose() {
-    this.disposed = true
-    if (this.layer) {
-      this.layer.hide()
-      this.container = null
-      this.layer = null
-    }
-  }
-
-  isDisposed() {
-    return this.disposed
+    this.layer.hide()
+    this.dom = null
+    this.layer = null
   }
 }

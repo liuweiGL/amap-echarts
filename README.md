@@ -6,6 +6,10 @@
 
 🚀 https://liuweigl.github.io/amap-echarts/
 
+## 更新日志
+
+:notes: [查看更新日志](./CHANGELOG.md)
+
 ## 本地测试
 
 下载项目

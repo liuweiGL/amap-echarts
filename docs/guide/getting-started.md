@@ -16,7 +16,16 @@ yarn add amap-echarts
 ```js
 import AMapEcharts from 'amap-echarts';
 
-const ae = new AMapEcharts(amap);
+// Promise
+function usePromise() {
+  AMapEcharts.init(map).then(ae => {
+    ae.setOption(options);
+  });
+}
 
-ae.setOption(options);
+// await
+async function useAwait() {
+  const ae = await AMapEcharts.init(map);
+  ae.setOption(options);
+}
 ```

@@ -4,7 +4,7 @@ import rollupBaseConfig from './rollup.config.base'
 export default {
   ...rollupBaseConfig,
   input: 'src/libs/index.js',
-  external: ['echarts/lib/echarts', 'events'],
+  external: ['echarts/lib/echarts'],
   output: [
     {
       exports: 'named',

@@ -62,7 +62,7 @@
     "rollup-plugin-multi-input": "^1.0.2",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.1.1",
-    "standard-version": "^7.0.0",
+    "standard-version": "^8.0.1",
     "vue-template-compiler": "^2.6.10",
     "vuepress": "^1.0.3"
   }
